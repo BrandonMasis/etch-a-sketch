@@ -230,7 +230,12 @@ dino-color-picker{
     height: 90%;
 }
 
-
+#currentColor{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: rgb(62 56 56);
+}
 
 
 

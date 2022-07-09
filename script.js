@@ -8,6 +8,7 @@ const rainbow = document.getElementById("rainbow");
 const slider = document.getElementById("gridSize");
 const sliderValue = document.getElementById("sliderValue");
 const dropper = document.getElementById("dropper");
+const currentColorDisplay = document.getElementById("currentColor");
 
 function randomValue() {
   return Math.floor(Math.random() * 255);
@@ -64,6 +65,7 @@ function grid(size) {
         rainbowMode = false;
         rainbow.style.border = "";
         currentColor = square.style.backgroundColor;
+        currentColorDisplay.style.backgroundColor = currentColor;
       } else if (rainbowMode) {
         square.style.backgroundColor = randomColor(randomValue, randomIndex);
       } else {
@@ -112,6 +114,7 @@ function colorPicker() {
 
 picker.addEventListener("change", () => {
   currentColor = colorPicker();
+  currentColorDisplay.style.backgroundColor = currentColor;
   rainbowMode = false;
 });
 
