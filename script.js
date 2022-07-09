@@ -60,13 +60,17 @@ function grid(size) {
     });
 
     square.addEventListener("click", (e) => {
-      if (dropperActive == true) {
+      if (dropperActive) {
         rainbowMode = false;
+        rainbow.style.border = "";
         currentColor = square.style.backgroundColor;
+      } else if (rainbowMode) {
+        square.style.backgroundColor = randomColor(randomValue, randomIndex);
       } else {
         square.style.backgroundColor = currentColor;
-        return;
       }
+      dropperActive = false;
+      dropper.style.border = "";
     });
 
     square.addEventListener("mouseenter", (e) => {
@@ -93,6 +97,7 @@ grid(16); // default grid to 16x16
 
 for (let swatch of swatches) {
   swatch.addEventListener("click", (e) => {
+    coloring = false;
     currentColor = swatch.getAttribute("data-color");
   });
 }
@@ -113,8 +118,10 @@ picker.addEventListener("change", () => {
 rainbow.addEventListener("click", () => {
   if (rainbowMode === true) {
     rainbowMode = false;
+    rainbow.style.border = "";
   } else {
     rainbowMode = true;
+    rainbow.style.border = "solid yellowgreen 5px";
   }
 });
 
@@ -127,6 +134,8 @@ let dropperActive = false;
 
 dropper.addEventListener("click", () => {
   coloring = false;
+  rainbowMode = false;
+  rainbow.style.border = "";
   if (dropperActive === false) {
     dropperActive = true;
     dropper.style.border = "greenyellow solid 5px";
