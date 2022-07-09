@@ -147,3 +147,7 @@ dropper.addEventListener("click", () => {
     dropper.style.border = "";
   }
 });
+
+canvas.addEventListener("mouseleave", () => {
+  coloring = false;
+});
